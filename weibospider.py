@@ -18,7 +18,7 @@ import data_save_to_csv as ds
 
 headers = {#request header
     'User-Agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
-    'Cookie': 'MLOGIN=1;WEIBOCN_FROM=1110006030;SCF=Art5xhYEloxGpUp_gy0CrNMb39zsZpmvPKFDk3O7TwWj-9gseA5BGJay3NJHhBR0ajxurXNIaTSpkxwX6HWOP9E.;_T_WM=26723672006;SSOLoginState=1583609025;M_WEIBOCN_PARAMS=uicode%3D20000174;XSRF-TOKEN=a88288;SUHB=08JrogEnY36tjx;SUB=_2A25zZ4SRDeRhGeBG7FUV9ifPzT2IHXVQqyzZrDV6PUJbkdAKLWjhkW1NQeFDpIhkzgWQekAYw2p2d7DA9x9ywS4B'
+    'Cookie': 'MLOGIN=1;WEIBOCN_FROM=;SCF=Art5xhYEloxGpUp_gy0CrNMb39zsZpmvPKFDk3O7TwWj-9gseA5BGJay3NJHhBR0ajxurXNIaTSpkxwX6HWOP9E.;_T_WM=26723672006;SSOLoginState=1583609025;M_WEIBOCN_PARAMS=uicode%3D20000174;XSRF-TOKEN=a88288;SUHB=08JrogEnY36tjx;SUB=_2A25zZ4SRDeRhGeBG7FUV9ifPzT2IHXVQqyzZrDV6PUJbkdAKLWjhkW1NQeFDpIhkzgWQekAYw2p2d7DA9x9ywS4B'
     }
 
 def iphone_requests(i_d,n):#Request by phone
@@ -60,6 +60,7 @@ def main_info(i_d,n):#return weibo's information:love/comment/forward/time/main 
     for count in range(1,n):
         soup = iphone_requests(i_d,count)
         for i in soup['data']['cards']:
+
             try:
                 # print("点赞:",i["mblog"]['attitudes_count'],"评论:",i["mblog"]['comments_count'],"转发:",i["mblog"]['reposts_count'],"时间:",i["mblog"]["created_at"])
                 ds.save_main_information({'love':i["mblog"]['attitudes_count'],
